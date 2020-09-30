@@ -1,2 +1,18 @@
 #!/bin/bash
-git checkout 
+#USAP Assignment 2 build kernel script
+#Name: Dat LE
+#Id: s3794387
+
+#Path for Executables
+GIT=usr/bin/git
+CP=usr/bin/cp
+
+#Path for git directories
+myGIT="https://github.com/s3794387/USAP-Assignment2"
+kernelGIT="https://github.com/raspberrypi/linux"
+
+#Check out my repository
+$GIT clone --depth=1 $myGIT
+
+#Check out rasberry pi kernel
+$GIT clone --depth=1 $kernelGIT
