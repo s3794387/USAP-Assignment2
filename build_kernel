@@ -22,11 +22,19 @@ $GIT clone --depth=1 $myGIT
 #Check out rasberry pi kernel
 $GIT clone --depth=1 $kernelGIT
 
-#Copy ".config" file to the right place
-$CP USAP-Assignment2/.config linux/.config
+
+#Start Performance monitoring
+sh USAP-Assignment2/performance_monitor &
+monitor_pid=$!
 
 #Build the kernel
 cd linux
+KERNEL=kernel7l
+$MAKE bcm2711_defconfig
+
+#Copy ".config" file to the right place
+$CP USAP-Assignment2/.config linux/.config
+
 $MAKE -j4 zImage modules dtbs
 
 #Back up appropritate files in /boot
@@ -41,7 +49,6 @@ sudo $CP /boot/overlays/README Backup/overlays
 sudo $CP /boot/$KERNEL.img
 
 $TAR -zcvf kernel_backup.tar.gz Backup
-$RM -r Backup
 
 #Copy new Kernel into /boot
 sudo $MAKE modules_install
