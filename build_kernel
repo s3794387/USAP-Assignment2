@@ -4,8 +4,13 @@
 #Id: s3794387
 
 #Path for Executables
-GIT=usr/bin/git
-CP=usr/bin/cp
+GIT=/usr/bin/git
+CP=/bin/cp
+TAR=/bin/tar
+MAKE=/usr/bin/make
+MKDIR=/bin/mkdir
+RM=/bin/rm
+REBOOT=/sbin/reboot
 
 #Path for git directories
 myGIT="https://github.com/s3794387/USAP-Assignment2"
@@ -16,3 +21,36 @@ $GIT clone --depth=1 $myGIT
 
 #Check out rasberry pi kernel
 $GIT clone --depth=1 $kernelGIT
+
+#Copy ".config" file to the right place
+$CP USAP-Assignment2/.config linux/.config
+
+#Build the kernel
+cd linux
+$MAKE -j4 zImage modules dtbs
+
+#Back up appropritate files in /boot
+#These files will be compressed and saved as kernel_backup.tar.gz in linux folder
+$MKDIR Backup
+cd Backup
+$MKDIR overlays
+cd ..
+sudo $CP /boot/*.dtb Backup
+sudo $CP /boot/overlays/*.dtb* Backup/overlays
+sudo $CP /boot/overlays/README Backup/overlays
+sudo $CP /boot/$KERNEL.img
+
+$TAR -zcvf kernel_backup.tar.gz Backup
+$RM -r Backup
+
+#Copy new Kernel into /boot
+sudo $MAKE modules_install
+sudo $CP arch/arm/boot/dts/*.dtb /boot/
+sudo $CP arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
+sudo $CP arch/arm/boot/dts/overlays/README /boot/overlays/
+
+sudo $CP arch/arm/boot/zImage /boot/$KERNEL.img
+
+#Reboot the system for the changes to take place
+sudo $REBOOT
+
