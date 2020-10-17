@@ -50,6 +50,7 @@ sudo $CP /boot/overlays/README Backup/boot/overlays
 sudo $CP /boot/$KERNEL.img Backup/boot
 
 $TAR -zcvf kernel_backup.tar.gz Backup
+sudo $RM -r Backup
 
 #Copy new Kernel into /boot
 sudo $MAKE modules_install
