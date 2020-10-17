@@ -8,8 +8,10 @@ GIT=/usr/bin/git
 CP=/bin/cp
 TAR=/bin/tar
 MAKE=/usr/bin/make
+SH=/bin/sh
 MKDIR=/bin/mkdir
 RM=/bin/rm
+KILL=/bin/kill
 REBOOT=/sbin/reboot
 
 #Path for git directories
@@ -24,13 +26,12 @@ $GIT clone --depth=1 $kernelGIT
 
 
 #Start Performance monitoring
-sh USAP-Assignment2/performance_monitor &
+$SH USAP-Assignment2/performance_monitor &
 monitor_pid=$!
 
 #Build the kernel
 cd linux
 KERNEL=kernel7l
-$MAKE bcm2711_defconfig
 
 #Copy ".config" file to the right place
 $CP USAP-Assignment2/.config linux/.config
@@ -40,13 +41,13 @@ $MAKE -j4 zImage modules dtbs
 #Back up appropritate files in /boot
 #These files will be compressed and saved as kernel_backup.tar.gz in linux folder
 $MKDIR Backup
-cd Backup
-$MKDIR overlays
-cd ..
-sudo $CP /boot/*.dtb Backup
-sudo $CP /boot/overlays/*.dtb* Backup/overlays
-sudo $CP /boot/overlays/README Backup/overlays
-sudo $CP /boot/$KERNEL.img
+$MKDIR Backup/boot
+$MKDIR Backup/boot/overlays
+
+sudo $CP /boot/*.dtb Backup/boot
+sudo $CP /boot/overlays/*.dtb* Backup/boot/overlays
+sudo $CP /boot/overlays/README Backup/boot/overlays
+sudo $CP /boot/$KERNEL.img Backup/boot
 
 $TAR -zcvf kernel_backup.tar.gz Backup
 
@@ -57,6 +58,9 @@ sudo $CP arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
 sudo $CP arch/arm/boot/dts/overlays/README /boot/overlays/
 
 sudo $CP arch/arm/boot/zImage /boot/$KERNEL.img
+
+#Send USR1 signal to end monitoring process
+$KILL -s USR1 $monitor_pid >/dev/null
 
 #Reboot the system for the changes to take place
 sudo $REBOOT
