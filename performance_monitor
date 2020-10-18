@@ -10,7 +10,7 @@ trap "kill $$" USR1
 #Performance monitoring
 #Add headings
 printf "%s\t%s\n" "TIMESTAMP" "TEMP(C)" "CLOCK(MHz)"> kernel_performance_data
-printf "\n" "_____________________________________________________" >> kernel_performance_data
+printf "%20s\n" "_____________________________________________________" >> kernel_performance_data
 
 #Monitor Temperature every 1 second
 while true
@@ -18,9 +18,8 @@ do
 
 	timestamp=$(date +%s)
 	temp=$($VCGENCMD measure_temp | egrep -o '[0-9]*\.[0-9]*')
-	clock=$($VCGENCMD measure_clock arm | grep '=[0-9]*' | cut -d '=' -f 2-)
-	clock_short=$((clock/1000))
-	printf "%s\t%s\n" "$timestamp" "$temp" "$clock_short" >> kernel_performance_data
+	clock=$($VCGENCMD measure_clock arm | grep -o '=[0-9]*' | cut -d '=' -f 2-)
+	printf "%s\t%s\n" "$timestamp" "$temp" "$clock" >> kernel_performance_data
 	sleep 1
 done
 
