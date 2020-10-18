@@ -32,7 +32,7 @@ $SH USAP-Assignment2/performance_monitor &
 monitor_pid=$!
 
 #Build the kernel
-cd linux
+cd linux || exit
 KERNEL=kernel7l
 
 $MAKE -j4 zImage modules dtbs
