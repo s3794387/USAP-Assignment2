@@ -24,6 +24,8 @@ $GIT clone --depth=1 $myGIT
 #Check out rasberry pi kernel
 $GIT clone --depth=1 $kernelGIT
 
+#Copy ".config" file to the right place
+$CP USAP-Assignment2/.config linux/.config
 
 #Start Performance monitoring
 $SH USAP-Assignment2/performance_monitor &
@@ -32,9 +34,6 @@ monitor_pid=$!
 #Build the kernel
 cd linux
 KERNEL=kernel7l
-
-#Copy ".config" file to the right place
-$CP USAP-Assignment2/.config linux/.config
 
 $MAKE -j4 zImage modules dtbs
 
