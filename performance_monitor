@@ -10,7 +10,7 @@ trap "kill $$" USR1
 #Performance monitoring
 #Add headings
 printf "%s\t%s\n" "TIMESTAMP" "TEMP(C)" "ARM CLOCK"> kernel_performance_data
-printf "%20s\n" "________________________" >> kernel_performance_data
+printf "%20s\n" "_______________________________________________" >> kernel_performance_data
 
 #Monitor Temperature every 1 second
 while true
