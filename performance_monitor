@@ -2,14 +2,18 @@
 #USAP Assignment 2 Performance Monitoring Script
 
 #Path for Executables
-VCGENCMD=/usr/bin/vcgencmd
+readonly VCGENCMD=/usr/bin/vcgencmd
+readonly PRINTF=/usr/bin/printf
+readonly GREP=/bin/grep
+readonly SLEEP=/bin/sleep
+readonly CUT=/usr/bin/cut
 
 #Listen for USR1 signal to stop the process
 trap 'kill $$' USR1
 
 #Performance monitoring
 #Add headings
-printf "%s\t%s\t%s\n" "TIME(s)" "TEMP(C)" "Clock(Hz)"> kernel_performance_data
+$PRINTF "%s\t%s\t%s\n" "TIME(s)" "TEMP(C)" "Clock(Hz)"> kernel_performance_data
 
 
 time=0
@@ -17,10 +21,10 @@ time=0
 #Monitor Temperature every 1 second
 while true
 do
-	temp=$($VCGENCMD measure_temp | grep -Eo '[0-9]*\.[0-9]*')
-	clock=$($VCGENCMD measure_clock arm | grep '=[0-9]*' | cut -d '=' -f 2-)
-	printf "%s\t%s\t%s\n" "$time" "$temp" "$clock" >> kernel_performance_data
-	sleep 1
+	temp=$($VCGENCMD measure_temp | $GREP -Eo '[0-9]*\.[0-9]*')
+	clock=$($VCGENCMD measure_clock arm | $GREP '=[0-9]*' | $CUT -d '=' -f 2-)
+	$PRINTF "%s\t%s\t%s\n" "$time" "$temp" "$clock" >> kernel_performance_data
+	$SLEEP 1
 	time=$(($time+1))
 done
 

@@ -12,7 +12,7 @@ readonly TOP=/usr/bin/top
 readonly SUDO=/usr/bin/sudo
 
 #Disable system-controlled ACT Led
-$ECHO none | $SUDO $TEE /sys/class/leds/led0/trigger >/dev/null
+$ECHO none | $SUDO $TEE /sys/class/leds/led0/trigger >/dev/null #See Ref 3
 
 #Listen for USR2 signal to stop the process
 trap 'kill $$' USR2
@@ -20,12 +20,16 @@ trap 'kill $$' USR2
 #Control LED based on CPU usage
 while true
 do
-	CPU_Usage=$($TOP -b -n1 | $GREP "Cpu(s)" | $AWK '{print $2 + $4}')
+	CPU_Usage=$($TOP -b -n1 | $GREP "Cpu(s)" | $AWK '{print $2 + $4}') #See Ref 4
 	CPU_Usage_compare=$($ECHO "$CPU_Usage * 10" | $BC | $AWK '{printf "%2d", $0}')
+	
 	on_time=$($ECHO " scale=2 ; $CPU_Usage / 100"| $BC | $AWK '{printf "%.2f", $0}')
 	off_time=$($ECHO " scale=2 ; 1 - $on_time" | $BC | $AWK '{printf "%.2f", $0}')
-	$ECHO 1 | $SUDO $TEE /sys/class/leds/led0/brightness >/dev/null
+	
+	$ECHO 1 | $SUDO $TEE /sys/class/leds/led0/brightness >/dev/null #See Ref 1
 	$SLEEP	"$on_time"
+	
+	#If CPU is at 100% usage, LED stays on
 	if [ "$CPU_Usage_compare" -lt 100 ]
 	then
 		$ECHO 0 | $SUDO $TEE /sys/class/leds/led0/brightness >/dev/null
@@ -33,6 +37,14 @@ do
 	fi
 done
 
+#References
 
+#1. Raspberry Pi Stack Exchange. 2020. Why Does Sudo Not Work In This Case?. [online] Available at: <https://raspberrypi.stackexchange.com/questions/22213/why-does-sudo-not-work-in-this-case> [Accessed 19 October 2020].
+
+#2. Raspberrypi.org. 2020. Can We Control The On-Board Leds - Raspberry Pi Forums. [online] Available at: <https://www.raspberrypi.org/forums/viewtopic.php?t=12530> [Accessed 19 October 2020].
+
+#3. Jeffgeerling.com. 2020. Controlling PWR And ACT Leds On The Raspberry Pi | Jeff Geerling. [online] Available at: <https://www.jeffgeerling.com/blogs/jeff-geerling/controlling-pwr-act-leds-raspberry-pi> [Accessed 19 October 2020].
+
+#4. Unix & Linux Stack Exchange. 2020. Bash Script That Print Cpu Usage,Diskusage,Ram Usage. [online] Available at: <https://unix.stackexchange.com/questions/69167/bash-script-that-print-cpu-usage-diskusage-ram-usage/69179> [Accessed 18 October 2020].
 
 

@@ -13,6 +13,7 @@ MKDIR=/bin/mkdir
 RM=/bin/rm
 KILL=/bin/kill
 REBOOT=/sbin/reboot
+SUDO=/usr/bin/sudo
 
 #Path for git directories
 myGIT="https://github.com/s3794387/USAP-Assignment2"
@@ -46,22 +47,21 @@ $MAKE -j4 zImage modules dtbs
 $MKDIR Backup
 $MKDIR Backup/boot
 $MKDIR Backup/boot/overlays
-
-sudo $CP /boot/*.dtb Backup/boot
-sudo $CP /boot/overlays/*.dtb* Backup/boot/overlays
-sudo $CP /boot/overlays/README Backup/boot/overlays
-sudo $CP /boot/$KERNEL.img Backup/boot
+$SUDO $CP /boot/*.dtb Backup/boot
+$SUDO $CP /boot/overlays/*.dtb* Backup/boot/overlays
+$SUDO $CP /boot/overlays/README Backup/boot/overlays
+$SUDO $CP /boot/$KERNEL.img Backup/boot
 
 $TAR -zcvf kernel_backup.tar.gz Backup
-sudo $RM -r Backup
+$SUDO $RM -r Backup
 
 #Copy new Kernel into /boot
-sudo $MAKE modules_install
-sudo $CP arch/arm/boot/dts/*.dtb /boot/
-sudo $CP arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
-sudo $CP arch/arm/boot/dts/overlays/README /boot/overlays/
+$SUDO $MAKE modules_install
+$SUDO $CP arch/arm/boot/dts/*.dtb /boot/
+$SUDO $CP arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
+$SUDO $CP arch/arm/boot/dts/overlays/README /boot/overlays/
 
-sudo $CP arch/arm/boot/zImage /boot/$KERNEL.img
+$SUDO $CP arch/arm/boot/zImage /boot/$KERNEL.img
 
 #Send USR1 signal to end monitoring process
 $KILL -s USR1 $monitor_pid >/dev/null
@@ -70,5 +70,5 @@ $KILL -s USR1 $monitor_pid >/dev/null
 $KILL -s USR2 $led_pid >/dev/null
 
 #Reboot the system for the changes to take place
-sudo $REBOOT
+$SUDO $REBOOT
 
