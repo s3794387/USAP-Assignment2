@@ -1,3 +1,51 @@
+commit 2649929d31f812a21ac7b075dd185886d0379e31
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Mon Oct 19 08:12:23 2020 +0100
+
+    minor changes according to shellcheck
+
+commit dade0874f1bee426c5d5e32b50a0d01d88628db1
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Mon Oct 19 08:02:58 2020 +0100
+
+    Fixed report
+
+commit 8ce83272e8006ddf6f101dcfd09887f17f46aebc
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Mon Oct 19 07:59:44 2020 +0100
+
+    added readonly to executables
+
+commit 1af3a3d3d3a2495486cf9ad766412e5dc765976b
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Mon Oct 19 07:57:54 2020 +0100
+
+    bug fix
+
+commit 265adb38cea78ae354919016f3a29f5537f86f1a
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Mon Oct 19 07:41:52 2020 +0100
+
+    remove unwanted files
+
+commit 3445d386e77c33f6b714dde37003a1d56b9b686c
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Mon Oct 19 07:40:45 2020 +0100
+
+    update scripts
+
+commit 9f62c4dc767163596c247ba636dd2bffd48aee15
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Mon Oct 19 07:16:12 2020 +0100
+
+    remove unwanted files
+
+commit b9bf07d7db891b8b105a1bf5c79dd114823e74f1
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Mon Oct 19 07:14:46 2020 +0100
+
+    added second performance script and update build_kernel
+
 commit 00b7a8da9a99743c8cd5beec2c6e7becfdd853c6
 Author: s3794387 <s3794387@student.rmit.edu.au>
 Date:   Sun Oct 18 11:45:43 2020 +0100

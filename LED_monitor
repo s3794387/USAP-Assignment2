@@ -1,5 +1,7 @@
 #!/bin/bash
 #USAP Assignment 2 LED signaling script
+#Name: Dat LE
+#Id: s3794387
 
 #Path for Executables
 readonly ECHO=/bin/echo
@@ -20,12 +22,15 @@ trap 'kill $$' USR2
 #Control LED based on CPU usage
 while true
 do
+	#Get total CPU usage then convert it to int for comparison
 	CPU_Usage=$($TOP -b -n1 | $GREP "Cpu(s)" | $AWK '{print $2 + $4}') #See Ref 4
 	CPU_Usage_compare=$($ECHO "$CPU_Usage * 10" | $BC | $AWK '{printf "%2d", $0}')
 	
+	#on and off time for ACT Led
 	on_time=$($ECHO " scale=2 ; $CPU_Usage / 100"| $BC | $AWK '{printf "%.2f", $0}')
 	off_time=$($ECHO " scale=2 ; 1 - $on_time" | $BC | $AWK '{printf "%.2f", $0}')
 	
+	#Turn LED on
 	$ECHO 1 | $SUDO $TEE /sys/class/leds/led0/brightness >/dev/null #See Ref 1
 	$SLEEP	"$on_time"
 	

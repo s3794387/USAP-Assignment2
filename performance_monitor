@@ -1,5 +1,7 @@
 #!/bin/bash
 #USAP Assignment 2 Performance Monitoring Script
+#Name: Dat LE
+#Id: s3794387
 
 #Path for Executables
 readonly VCGENCMD=/usr/bin/vcgencmd
@@ -12,19 +14,24 @@ readonly CUT=/usr/bin/cut
 trap 'kill $$' USR1
 
 #Performance monitoring
-#Add headings
+
+#Add headings for data
 $PRINTF "%s\t%s\t%s\n" "TIME(s)" "TEMP(C)" "Clock(Hz)"> kernel_performance_data
 
-
+#Reset time value
 time=0
 
 #Monitor Temperature every 1 second
 while true
 do
+	#Monitor and format Temperature and Core Clock values
 	temp=$($VCGENCMD measure_temp | $GREP -Eo '[0-9]*\.[0-9]*')
 	clock=$($VCGENCMD measure_clock arm | $GREP '=[0-9]*' | $CUT -d '=' -f 2-)
+	
+	#Output data to file
 	$PRINTF "%s\t%s\t%s\n" "$time" "$temp" "$clock" >> kernel_performance_data
 	$SLEEP 1
+	
 	time=$((time+1))
 done
 
