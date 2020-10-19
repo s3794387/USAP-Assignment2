@@ -4,16 +4,16 @@
 #Id: s3794387
 
 #Path for Executables
-GIT=/usr/bin/git
-CP=/bin/cp
-TAR=/bin/tar
-MAKE=/usr/bin/make
-SH=/bin/sh
-MKDIR=/bin/mkdir
-RM=/bin/rm
-KILL=/bin/kill
-REBOOT=/sbin/reboot
-SUDO=/usr/bin/sudo
+readonly GIT=/usr/bin/git
+readonly CP=/bin/cp
+readonly TAR=/bin/tar
+readonly MAKE=/usr/bin/make
+readonly SH=/bin/sh
+readonly MKDIR=/bin/mkdir
+readonly RM=/bin/rm
+readonly KILL=/bin/kill
+readonly REBOOT=/sbin/reboot
+readonly SUDO=/usr/bin/sudo
 
 #Path for git directories
 myGIT="https://github.com/s3794387/USAP-Assignment2"
