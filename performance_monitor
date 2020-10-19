@@ -25,6 +25,6 @@ do
 	clock=$($VCGENCMD measure_clock arm | $GREP '=[0-9]*' | $CUT -d '=' -f 2-)
 	$PRINTF "%s\t%s\t%s\n" "$time" "$temp" "$clock" >> kernel_performance_data
 	$SLEEP 1
-	time=$(($time+1))
+	time=$((time+1))
 done
 
