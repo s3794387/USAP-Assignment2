@@ -19,14 +19,12 @@ SUDO=/usr/bin/sudo
 myGIT="https://github.com/s3794387/USAP-Assignment2"
 kernelGIT="https://github.com/raspberrypi/linux"
 
+
 #Check out my repository
 $GIT clone --depth=1 $myGIT
 
 #Check out rasberry pi kernel
 $GIT clone --depth=1 $kernelGIT
-
-#Copy ".config" file to the right place
-$CP USAP-Assignment2/.config linux/.config
 
 #Start Performance monitoring
 $SH USAP-Assignment2/performance_monitor &
@@ -35,6 +33,9 @@ monitor_pid=$!
 #Start Second Performance monitoring
 $SH USAP-Assignment2/LED_monitor &
 led_pid=$!
+
+#Copy ".config" file to the right place
+$CP USAP-Assignment2/.config linux/.config
 
 #Build the kernel
 cd linux || exit
