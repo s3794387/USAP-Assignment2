@@ -1,0 +1,215 @@
+commit 00b7a8da9a99743c8cd5beec2c6e7becfdd853c6
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sun Oct 18 11:45:43 2020 +0100
+
+    update monitor data - actual test result
+
+commit 71c9bb1e10fd54e588dbebc92f4f591871b4d7d4
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sun Oct 18 11:43:57 2020 +0100
+
+    fix minor errors based on shellcheck
+
+commit e55be27b1c0cfd352c66b7004b03f66f14bbdd7d
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sun Oct 18 11:36:57 2020 +0100
+
+    Fixed Graph not displaying labels
+
+commit c5bdcacf40b749a3ac88c3bbe05550722a294bb2
+Merge: 8dbd9f8 9f0d932
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sun Oct 18 11:29:21 2020 +0100
+
+    Merge branch 'dat'
+    
+    Added Graph and Report
+
+commit 9f0d9325b05ae87baf2c1b599765788afde3e89f
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sun Oct 18 11:28:46 2020 +0100
+
+    Graphing and performance report
+
+commit 8dbd9f846d761c12b32155f2239c3276f1653bd4
+Merge: f0c33a8 299bf87
+Author: s3794387 <48736392+s3794387@users.noreply.github.com>
+Date:   Sun Oct 18 18:44:52 2020 +1100
+
+    Merge pull request #2 from s3794387/dat
+    
+    Dat
+
+commit 299bf87a7647e8e071651e38b31b5bdd30bfb9fa
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sun Oct 18 07:30:32 2020 +0100
+
+    update performance_monitor script to change timestamp - time elapsed
+
+commit 290e230c0f2e4db2e45c0757f92994f261129286
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sun Oct 18 05:47:11 2020 +0100
+
+    update build_kernel
+
+commit f0c33a85f955513be091197a65326b0cad795836
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sun Oct 18 05:31:39 2020 +0100
+
+    update performance_monitior
+
+commit 7fefec5154d56b1c6376245489a7e1522f3c0947
+Author: s3794387 <48736392+s3794387@users.noreply.github.com>
+Date:   Sun Oct 18 15:26:36 2020 +1100
+
+    Update performance_monitor
+
+commit a1f3158f40c934ad335ff12c00b9593b78d307a6
+Author: s3794387 <48736392+s3794387@users.noreply.github.com>
+Date:   Sun Oct 18 11:50:47 2020 +1100
+
+    Update performance_monitor
+
+commit 0b33e983bc547dac57e047d600bc04e9e1e53af1
+Author: s3794387 <48736392+s3794387@users.noreply.github.com>
+Date:   Sun Oct 18 11:43:57 2020 +1100
+
+    Update performance_monitor
+
+commit e519cdf1dbffe92d635a1cef0b6076b978230f29
+Author: s3794387 <48736392+s3794387@users.noreply.github.com>
+Date:   Sun Oct 18 11:42:29 2020 +1100
+
+    Update performance_monitor
+
+commit 2ef1060b162bc412a424d03f5eec4381caeceaad
+Author: s3794387 <48736392+s3794387@users.noreply.github.com>
+Date:   Sun Oct 18 11:41:01 2020 +1100
+
+    Update performance_monitor
+
+commit c884dce782b9d2a1fd37d01175cc80f08566257f
+Author: s3794387 <48736392+s3794387@users.noreply.github.com>
+Date:   Sun Oct 18 11:35:30 2020 +1100
+
+    Update performance_monitor
+
+commit 525f96ede3d743c57b1bb2e5aea96c92d0b89638
+Author: s3794387 <48736392+s3794387@users.noreply.github.com>
+Date:   Sun Oct 18 11:34:20 2020 +1100
+
+    Update performance_monitor
+
+commit 67957ad5391819964e65c1dc0c0b980fff8bbfd0
+Author: s3794387 <48736392+s3794387@users.noreply.github.com>
+Date:   Sun Oct 18 11:32:58 2020 +1100
+
+    Update performance_monitor
+
+commit ad46022b05e5cfb9502be15362a082fb7d4298fd
+Author: s3794387 <48736392+s3794387@users.noreply.github.com>
+Date:   Sun Oct 18 11:31:38 2020 +1100
+
+    Update performance_monitor
+
+commit 5166f613a084d8a3617031e0038de6053cf27c78
+Author: s3794387 <48736392+s3794387@users.noreply.github.com>
+Date:   Sun Oct 18 11:30:35 2020 +1100
+
+    Update performance_monitor
+
+commit 214ff1e3e3947dccd6362c8ef6d700f2f18ba523
+Author: s3794387 <48736392+s3794387@users.noreply.github.com>
+Date:   Sun Oct 18 11:17:06 2020 +1100
+
+    Update performance_monitor
+
+commit fc8b484b5601686976878c2554138262d98c5b97
+Author: s3794387 <48736392+s3794387@users.noreply.github.com>
+Date:   Sun Oct 18 09:53:15 2020 +1100
+
+    Update performance_monitor
+    
+    fix temperature display error
+
+commit d3b1e7c391b937c52b7b923647686425aac3c523
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sat Oct 17 23:30:42 2020 +0100
+
+    update build_kernel to remove backup folder
+
+commit 64db161e33980e95fc708492af816ee544d2fd8c
+Merge: 71cc381 fb5874b
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sat Oct 17 23:22:29 2020 +0100
+
+    Merge branch 'master' of https://github.com/s3794387/USAP-Assignment2
+
+commit 71cc381c2d450389993085819f66b70d1d045367
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sat Oct 17 23:21:21 2020 +0100
+
+    fix error
+
+commit fb5874b05216374886d79e5d3b052044fc30bbe1
+Merge: 7736050 7d522ac
+Author: s3794387 <48736392+s3794387@users.noreply.github.com>
+Date:   Sun Oct 18 09:19:37 2020 +1100
+
+    Merge pull request #1 from s3794387/dat
+    
+    Dat
+
+commit 7d522ac097551eff2209f020b4b2a71870f46c1d
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sat Oct 17 23:16:03 2020 +0100
+
+    fix error in build_kernel
+
+commit e56bf7b01749479d553f6ae91e66ce8c1355bf58
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sat Oct 17 22:54:11 2020 +0100
+
+    update build-kernel to monitor performance
+
+commit 00796254daa900385a05c48ac9b23cb680cd4f9f
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sat Oct 17 22:53:38 2020 +0100
+
+    update build-kernel to monitor performance
+
+commit 7736050f5d7d41ead9407a9e958bfa0d13e199fb
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sat Oct 17 21:32:41 2020 +0100
+
+    added performance monitoring script
+
+commit e5770ee11b679986c9fa0c51c1fb55ded1ae619a
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Sat Oct 17 09:06:19 2020 +0100
+
+    upddate build_kernel
+
+commit 7004678e0b39f6ab131224b4efd37995eec54bb7
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Wed Sep 30 14:58:59 2020 +0100
+
+    Changed .config file to match assignment requirement and updated build_kernel
+
+commit 1375bfc555e9e724e6f5651a02f285f49455df3b
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Wed Sep 30 14:25:39 2020 +0100
+
+    test2
+
+commit 9572a2e5c97f3460cebfbe1cc3aa63c46aa48bb3
+Author: s3794387 <s3794387@student.rmit.edu.au>
+Date:   Wed Sep 30 13:40:23 2020 +0100
+
+    test
+
+commit 1919ec21b23dbfac3ac0434fa956f7b52a54f68c
+Author: s3794387 <48736392+s3794387@users.noreply.github.com>
+Date:   Wed Sep 30 22:13:22 2020 +1000
+
+    Initial commit

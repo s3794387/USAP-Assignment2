@@ -1,0 +1,38 @@
+#!/bin/bash
+#USAP Assignment 2 LED signaling script
+
+#Path for Executables
+readonly ECHO=/bin/echo
+readonly SLEEP=/bin/sleep
+readonly GREP=/bin/grep
+readonly BC=/usr/bin/bc
+readonly AWK=/usr/bin/awk
+readonly TEE=/usr/bin/tee
+readonly TOP=/usr/bin/top
+readonly SUDO=/usr/bin/sudo
+
+#Disable system-controlled ACT Led
+$ECHO none | $SUDO $TEE /sys/class/leds/led0/trigger >/dev/null
+
+#Listen for USR2 signal to stop the process
+trap 'kill $$' USR2
+
+#Control LED based on CPU usage
+while true
+do
+	CPU_Usage=$($TOP -b -n1 | $GREP "Cpu(s)" | $AWK '{print $2 + $4}')
+	CPU_Usage_compare=$($ECHO "$CPU_Usage * 10" | $BC | $AWK '{printf "%2d", $0}')
+	on_time=$($ECHO " scale=2 ; $CPU_Usage / 100"| $BC | $AWK '{printf "%.2f", $0}')
+	off_time=$($ECHO " scale=2 ; 1 - $on_time" | $BC | $AWK '{printf "%.2f", $0}')
+	$ECHO 1 | $SUDO $TEE /sys/class/leds/led0/brightness >/dev/null
+	$SLEEP	"$on_time"
+	if [ "$CPU_Usage_compare" -lt 100 ]
+	then
+		$ECHO 0 | $SUDO $TEE /sys/class/leds/led0/brightness >/dev/null
+		$SLEEP "$off_time"
+	fi
+done
+
+
+
+

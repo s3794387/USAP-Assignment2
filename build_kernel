@@ -31,6 +31,10 @@ $CP USAP-Assignment2/.config linux/.config
 $SH USAP-Assignment2/performance_monitor &
 monitor_pid=$!
 
+#Start Second Performance monitoring
+$SH USAP-Assignment2/LED_monitor &
+led_pid=$!
+
 #Build the kernel
 cd linux || exit
 KERNEL=kernel7l
@@ -61,6 +65,9 @@ sudo $CP arch/arm/boot/zImage /boot/$KERNEL.img
 
 #Send USR1 signal to end monitoring process
 $KILL -s USR1 $monitor_pid >/dev/null
+
+#Send USR2 signal to end second monitoring process
+$KILL -s USR2 $led_pid >/dev/null
 
 #Reboot the system for the changes to take place
 sudo $REBOOT
